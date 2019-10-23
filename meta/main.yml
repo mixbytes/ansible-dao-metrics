@@ -1,0 +1,22 @@
+---
+galaxy_info:
+  role_name: dao_metrics
+  author: Andrey Levkin
+  description: Setup DaoBet blockchain metrics exporter for prometheus.
+  company: MixBytes
+
+  license: Apache 2.0
+
+  min_ansible_version: 2.7
+
+  github_branch: master
+
+  platforms:
+    - name: Ubuntu
+      versions:
+        - bionic
+
+  galaxy_tags:
+    - blockchain
+
+dependencies: []

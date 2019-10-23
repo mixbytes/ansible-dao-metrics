@@ -1,0 +1,34 @@
+---
+# tasks file for ansible-dao-metrics
+- name: Install pip3
+  become: true
+  apt:
+    name: python3-pip
+
+- name: Install docker-py
+  become: true
+  pip:
+    name: docker
+
+- name: Create directories
+  become: true
+  file:
+    path: "{{ bc_daobet_metrics_dir }}"
+    state: directory
+
+- name: Create config from template
+  become: true
+  template:
+    src: "{{ bc_daobet_metrics_config_template }}"
+    dest: "{{ bc_daobet_metrics_config }}"
+
+- name: Update and start docker container
+  become: true
+  docker_container:
+    name: dao-metrics-service
+    image: mixbytes/haya-metrics-service
+    volumes:
+      - "{{ bc_daobet_metrics_config }}:/tool/config/config.js"
+    ports:
+      - '0.0.0.0:9999:3000'
+    state: started

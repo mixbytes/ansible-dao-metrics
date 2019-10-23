@@ -1,0 +1,8 @@
+---
+# defaults file for ansible-dao-metrics
+docker_install_compose: false
+bc_daobet_metrics_dir: "/opt/daobet/metrics"
+bc_daobet_metrics_config: "{{ bc_daobet_metrics_dir }}/config.js"
+bc_daobet_metrics_config_template: "config.js.j2"
+bc_daobet_mongodb_url: "mongodb://157.230.121.199:27017/daobet-fn-0"
+bc_daobet_fullnode_api_url: "http://157.230.121.199:8888"
